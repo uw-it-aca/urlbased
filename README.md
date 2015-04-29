@@ -1,4 +1,4 @@
-# URL-Based App
+# URL-Based Hybrid App
 
-A proof of concept.
+A proof of concept.  
 For UW-IT ACA.
