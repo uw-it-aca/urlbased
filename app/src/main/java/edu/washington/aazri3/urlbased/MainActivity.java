@@ -64,8 +64,8 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
-        Intent next = new Intent(getApplicationContext(), MainActivity.class);
-        String title;
+//        Intent next = new Intent(getApplicationContext(), MainActivity.class);
+//        String title;
         switch (number) {
             case 1:
 //                String title = getString(R.string.title_section1);
@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                mWebView.loadUrl("http://nonprofit.mdemo.me/");
+                mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
 //                next.putExtra("url", "http://nonprofit.mdemo.me/");
 //                next.putExtra("title", title);
 //                startActivity(next);
