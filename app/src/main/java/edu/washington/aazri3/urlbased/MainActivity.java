@@ -48,9 +48,9 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true); // beware of XSS
-        mWebView.loadUrl("http://beta.html5test.com/");
+        WebViewClientImpl webViewClient = new WebViewClientImpl(this);
+        mWebView.setWebViewClient(webViewClient);
+        mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
 
     }
 
@@ -64,30 +64,18 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
-//        Intent next = new Intent(getApplicationContext(), MainActivity.class);
-//        String title;
         switch (number) {
             case 1:
-//                String title = getString(R.string.title_section1);
-//                next.putExtra("url", "http://beta.html5test.com/");
-//                next.putExtra("title", title);
-//                startActivity(next);
                 mTitle = getString(R.string.title_section1);
-                mWebView.loadUrl("http://beta.html5test.com/");
+                mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
-//                next.putExtra("url", "http://nonprofit.mdemo.me/");
-//                next.putExtra("title", title);
-//                startActivity(next);
+                mWebView.loadUrl("http://beta.html5test.com/");
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
                 mWebView.loadUrl("http://www.bennolan.com/science/backbone-mobile/");
-//                next.putExtra("url", "http://www.bennolan.com/science/backbone-mobile/");
-//                next.putExtra("title", title);
-//                startActivity(next);
                 break;
         }
     }
