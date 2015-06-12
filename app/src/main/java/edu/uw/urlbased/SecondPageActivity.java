@@ -1,11 +1,10 @@
-package edu.washington.aazri3.urlbased;
+package edu.uw.urlbased;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.webkit.WebView;
-
 
 public class SecondPageActivity extends ActionBarActivity {
 

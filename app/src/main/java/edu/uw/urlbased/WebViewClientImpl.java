@@ -1,4 +1,4 @@
-package edu.washington.aazri3.urlbased;
+package edu.uw.urlbased;
 
 import android.app.Activity;
 import android.content.Intent;

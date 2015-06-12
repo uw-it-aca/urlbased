@@ -1,4 +1,4 @@
-package edu.washington.aazri3.urlbased;
+package edu.uw.urlbased;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
