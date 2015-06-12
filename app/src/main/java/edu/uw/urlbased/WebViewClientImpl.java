@@ -1,4 +1,4 @@
-package edu.washington.aazri3.urlbased;
+package edu.uw.urlbased;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by aazri3 on 5/5/15.
+ * Created by aazri3/azri92 on 5/5/15.
  */
 public class WebViewClientImpl extends WebViewClient {
     private Activity activity = null;

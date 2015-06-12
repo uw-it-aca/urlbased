@@ -3,9 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.0"
-
     defaultConfig {
-        applicationId "edu.washington.aazri3.urlbased"
+        applicationId 'edu.uw.urlbased'
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -21,6 +20,8 @@ android {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'
         }
+    }
+    productFlavors {
     }
 }
 

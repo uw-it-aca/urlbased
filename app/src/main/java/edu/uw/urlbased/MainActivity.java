@@ -1,26 +1,21 @@
-package edu.washington.aazri3.urlbased;
+package edu.uw.urlbased;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
+/**
+ * Created by Aba (azri92/aazri3) for UW-IT
+ */
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -30,7 +25,6 @@ public class MainActivity extends ActionBarActivity
 
     // Used to store the last screen title. For use in {@link #restoreActionBar()}.
     private CharSequence mTitle;
-    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +41,6 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        mWebView = (WebView) findViewById(R.id.activity_main_webview);
-        WebViewClientImpl webViewClient = new WebViewClientImpl(this);
-        mWebView.setWebViewClient(webViewClient);
-        mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
-
     }
 
     @Override
@@ -59,25 +48,8 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, WebViewFragment.newInstance(position + 1))
                 .commit();
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                mWebView.loadUrl("http://beta.html5test.com/");
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                mWebView.loadUrl("http://www.bennolan.com/science/backbone-mobile/");
-                break;
-        }
     }
 
     public void restoreActionBar() {
@@ -86,7 +58,6 @@ public class MainActivity extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,44 +87,58 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+    public static class WebViewFragment extends Fragment {
+        //The fragment argument representing the section number for this
+        // fragment.
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        private WebView mWebView;
+
+        //Returns a new instance of this fragment for the given section
+        //number.
+        public static WebViewFragment newInstance(int sectionNumber) {
+            WebViewFragment fragment = new WebViewFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
         }
 
-        public PlaceholderFragment() {
+        public WebViewFragment() {
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstantceState) {
+            super.onActivityCreated(savedInstantceState);
+
+            mWebView = (WebView) getActivity().findViewById(R.id.fragment_main_webview);
+            WebViewClientImpl webViewClient = new WebViewClientImpl(getActivity());
+            mWebView.setWebViewClient(webViewClient);
+            mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
+
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 1:
+                    getActivity().setTitle(getString(R.string.title_section1));
+                    mWebView.loadUrl(getString(R.string.url_1));
+                    break;
+                case 2:
+                    getActivity().setTitle(getString(R.string.title_section2));
+                    mWebView.loadUrl(getString(R.string.url_2));
+                    break;
+                case 3:
+                    getActivity().setTitle(getString(R.string.title_section3));
+                    mWebView.loadUrl(getString(R.string.url_3));
+                    break;
+            }
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+
+            return inflater.inflate(R.layout.fragment_main, container, false);
         }
 
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
     }
 
 }
