@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.webkit.WebView;
 
+/**
+ * Created by Aba (azri92/aazri3) for UW-IT
+ */
+
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -55,19 +59,24 @@ public class MainActivity extends ActionBarActivity
                 .commit();
     }
 
+    // Title & URLs are in res/values/urls.xml
     public void onSectionAttached(int number) {
+        String url;
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
-                mWebView.loadUrl("http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true");
+                url = getString(R.string.url_1);
+                mWebView.loadUrl(url);
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                mWebView.loadUrl("http://beta.html5test.com/");
+                url = getString(R.string.url_2);
+                mWebView.loadUrl(url);
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
-                mWebView.loadUrl("http://www.bennolan.com/science/backbone-mobile/");
+                url = getString(R.string.url_3);
+                mWebView.loadUrl(url);
                 break;
         }
     }
@@ -108,9 +117,6 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
