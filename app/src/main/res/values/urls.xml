@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_section1">Food Scout</string>
-    <string name="url_1">http://curry.eplt.washington.edu:8009/seattle/food/?hybrid=true</string>
+    <string name="title_section1">Scout</string>
+    <string name="url_1">http://curry.eplt.washington.edu:8000/?hybrid=true</string>
 
-    <string name="title_section2">HTML 5 Test</string>
-    <string name="url_2">https://html5test.com/</string>
+    <string name="title_section2">List</string>
+    <string name="url_2">http://curry.eplt.washington.edu:8000/list/?hybrid=true</string>
 
-    <string name="title_section3">University of Washington</string>
-    <string name="url_3">http://www.washington.edu</string>
+    <string name="title_section3">Favorites</string>
+    <string name="url_3">http://curry.eplt.washington.edu:8000/favorites/?hybrid=true</string>
 </resources>
